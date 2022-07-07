@@ -30,7 +30,6 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.4
-  pull_to_refresh: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
