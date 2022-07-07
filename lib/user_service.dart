@@ -18,7 +18,6 @@ class UserService {
         for (var e in data) {
           userData.add(UserModel.fromJson(e));
         }
-
         return userData;
       }
     } catch (e) {

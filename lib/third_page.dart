@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:test_suitmedia/user_model.dart';
 
@@ -28,6 +30,10 @@ class _ThirdPageState extends State<ThirdPage> {
 
   Future<void> fetchData(int page) async {
     final data = await userService.getAllUser(page);
+    if (data.isEmpty) {
+      log("Tidak ada data");
+      return;
+    }
     // Dua kali loop agar data bisa memenuhi layar
     for (var item in data) {
       userData.add(item);
@@ -54,6 +60,7 @@ class _ThirdPageState extends State<ThirdPage> {
       if (scrollController.position.pixels >=
               scrollController.position.maxScrollExtent &&
           !isLoading) {
+        log("fetch new data");
         isLoading = true;
         page += 1;
         fetchData(page);
@@ -140,11 +147,13 @@ class _ThirdPageState extends State<ThirdPage> {
                           ),
                     const SizedBox(height: 10),
                     (isLoading)
-                        ? const Text(
-                            "Loading ...",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                        ? const Center(
+                            child: Text(
+                              "Loading ...",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
                             ),
                           )
                         : const SizedBox()
