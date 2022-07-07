@@ -5,8 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:test_suitmedia/user_model.dart';
 
 class UserService {
-  Future<List<UserModel>> getAllUser() async {
-    Uri uri = Uri.parse("https://reqres.in/api/users");
+  Future<List<UserModel>> getAllUser(int page) async {
+    Uri uri = Uri.parse("https://reqres.in/api/users?page=$page");
 
     try {
       final response = await http.get(uri);

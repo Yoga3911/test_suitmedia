@@ -35,12 +35,14 @@ class _FirstPageState extends State<FirstPage> {
   }
 
   bool checkPalindrome(String text) {
+    text = text.replaceAll(" ", "");
     String temp = "";
-    for (int i = name.text.length; i > 0; i--) {
-      temp += name.text[i - 1];
+    for (int i = text.length; i > 0; i--) {
+      temp += text[i - 1];
     }
+
     palindrome.text = temp;
-    if (name.text == temp) {
+    if (text == temp) {
       return true;
     }
     return false;
